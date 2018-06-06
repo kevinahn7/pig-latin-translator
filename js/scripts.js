@@ -17,11 +17,32 @@ function letterQ(speak) {
 
 }
 
+function isVowel(isItVowel) {
+  if (isItVowel === 'a'|| isItVowel === 'e'|| isItVowel === 'i'|| isItVowel === 'o'|| isItVowel === 'u') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
 function vowelOne(speak){
   var theWord = speak + 'way';
   return theWord;
 }
 
+function consonent(speak) {
+  var word = speak.split('');
+  for (var i=0; i<word.length; i++) {
+    if (isVowel(word[i].toLowerCase())) {
+      var letters = word.splice(i)
+      letters.push(word.join(""))
+      var theWord = letters.join('') + 'ay'
+    }
+  }
+  return theWord;
+};
 
 
 $(document).ready(function() {
@@ -30,7 +51,6 @@ $(document).ready(function() {
     var sentence = $("input#sentenceInput").val();
     var newWord = [];
     var words = sentence.split(" ");
-    var array = []
     for (var x=0; x<words.length; x++) {
       if (!isNaN(words[x])) {
         newWord[x] = words[x];
@@ -40,10 +60,13 @@ $(document).ready(function() {
         newWord[x] = letterY(words[x]);
       } else if (words[x][0] === 'q' && words[x][1] === 'u') {
         newWord[x] = letterQ(words[x]);
-      } else if (words[x][0].toLowerCase() === 'a'||'e'||'i'||'o'||'u') {
+      } else if (isVowel(words[x][0].toLowerCase())) {
         newWord[x] = vowelOne(words[x]);
+      } else if (!isVowel(words[x][0].toLowerCase())) {
+        newWord[x] = consonent(words[x]);
 
       }
+
     };
 
 
