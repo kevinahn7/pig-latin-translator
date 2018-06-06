@@ -33,24 +33,20 @@ $(document).ready(function() {
     var consonants = [ 'b','c','d','f','g','h','j','k','l','m','n','p','qu','r','s','t','v','w','x','z']
     var words = sentence.split(" ");
     var array = []
-
     for (var x=0; x<words.length; x++) {
-      if (words[x].toLowerCase() === '1'||'2'||'3'||'4'||'5'||'6'||'7'||'8'||'9'||'0') {      
-      }
-        else if (words[x][0].toLowerCase() === "y") {
+      if (parseInt(words[x])*2 === parseInt(words[x]) + parseInt(words[x])) {
+        newWord[x] = words[x];
+      } else if (words[x] === "") {
+        newWord[x] = words[x];
+      } else if (words[x][0].toLowerCase() === "y") {
         newWord[x] = letterY(words[x]);
       } else if (words[x][0] === 'q' && words[x][1] === 'u') {
         newWord[x] = letterQ(words[x]);
       } else if (words[x][0].toLowerCase() === 'a'||'e'||'i'||'o'||'u') {
-        console.log('yes');
         newWord[x] = vowelOne(words[x]);
 
       }
     };
-
-
-
-
 
 
 
