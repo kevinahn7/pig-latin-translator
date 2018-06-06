@@ -23,6 +23,14 @@ function isVowel(isItVowel) {
   };
 };
 
+function isRealVowel(isItVowel) {
+  if (isItVowel === 'a'|| isItVowel === 'e'|| isItVowel === 'i'|| isItVowel === 'o'|| isItVowel === 'u' || isItVowel === 'y') {
+    return true;
+  } else {
+    return false;
+  };
+};
+
 function vowelOne(speak){
   var theWord = speak + 'way';
   return theWord;
@@ -31,7 +39,7 @@ function vowelOne(speak){
 function consonent(speak) {
   var word = speak.split('');
   for (var i=0; i<word.length; i++) {
-    if (isVowel(word[i].toLowerCase())) {
+    if (isRealVowel(word[i].toLowerCase())) {
       var letters = word.splice(i)
       letters.push(word.join(""))
       var theWord = letters.join('') + 'ay'
@@ -57,10 +65,10 @@ $(document).ready(function() {
         newWord[x] = letterQ(words[x]).toLowerCase();
       } else if (isVowel(words[x][0].toLowerCase())) {
         newWord[x] = vowelOne(words[x]).toLowerCase();
-      } else if (!isVowel(words[x][0].toLowerCase())) {
-        newWord[x] = consonent(words[x]).toLowerCase();
+      } else if (!isRealVowel(words[x][0].toLowerCase())) {
+        newWord[x] = consonent(words[x]);
       };
     };
-    $('#result').text(newWord.join(" ") + ".");
+    $('#result').text(newWord.join(" "));
   });
 });
