@@ -1,3 +1,42 @@
 body {
-margin: 10%;
+margin:5%;
+}
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+label {
+  font-size: 4em;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+#logo {
+  margin: 0 auto;
+  text-align: center;
+}
+
+img {
+  max-width: 700px;
+  width: 80%;
+  border-radius: 5%;
+}
+
+button {
+  margin: 20px;
+  width: 80%;
+}
+
+#result {
+  text-align: center;
+  font-size: 4em;
+}
+
+#sentenceInput {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 4em;
+  height: 100px;
 }

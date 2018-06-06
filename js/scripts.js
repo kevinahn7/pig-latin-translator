@@ -1,10 +1,9 @@
+/*Back end */
 function letterY(speak) {
   var letter = speak.split("").shift();
   var latinWord = speak.split("").splice(1);
   latinWord.push(letter);
   var theWord = latinWord.join('') + "ay";
-
-
   return theWord;
 };
 
@@ -14,23 +13,20 @@ function letterQ(speak) {
   word.push(letters.join(""))
   var theWord = word.join("") + "ay";
   return theWord;
-
-}
+};
 
 function isVowel(isItVowel) {
   if (isItVowel === 'a'|| isItVowel === 'e'|| isItVowel === 'i'|| isItVowel === 'o'|| isItVowel === 'u') {
     return true;
   } else {
     return false;
-  }
-}
-
-
+  };
+};
 
 function vowelOne(speak){
   var theWord = speak + 'way';
   return theWord;
-}
+};
 
 function consonent(speak) {
   var word = speak.split('');
@@ -39,12 +35,11 @@ function consonent(speak) {
       var letters = word.splice(i)
       letters.push(word.join(""))
       var theWord = letters.join('') + 'ay'
-    }
-  }
+    };
+  };
   return theWord;
 };
-
-
+/* Front end */
 $(document).ready(function() {
   $("form#pigPlugin").submit(function(event){
     event.preventDefault();
@@ -57,26 +52,15 @@ $(document).ready(function() {
       } else if (words[x] === "") {
         newWord[x] = words[x];
       } else if (words[x][0].toLowerCase() === "y") {
-        newWord[x] = letterY(words[x]);
+        newWord[x] = letterY(words[x]).toLowerCase();
       } else if (words[x][0] === 'q' && words[x][1] === 'u') {
-        newWord[x] = letterQ(words[x]);
+        newWord[x] = letterQ(words[x]).toLowerCase();
       } else if (isVowel(words[x][0].toLowerCase())) {
-        newWord[x] = vowelOne(words[x]);
+        newWord[x] = vowelOne(words[x]).toLowerCase();
       } else if (!isVowel(words[x][0].toLowerCase())) {
-        newWord[x] = consonent(words[x]);
-
-      }
-
+        newWord[x] = consonent(words[x]).toLowerCase();
+      };
     };
-
-
-    // var vowels = ['a','e','i','o','u', 'y'];
-    // var consonants = [ 'b','c','d','f','g','h','j','k','l','m','n','p','qu','r','s','t','v','w','x','z']
-
-
-
-    $('#result').text(newWord.join(" "));
-
-
+    $('#result').text(newWord.join(" ") + ".");
   });
 });
