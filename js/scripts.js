@@ -32,7 +32,11 @@ function isRealVowel(isItVowel) {
 };
 
 function vowelOne(speak){
-  var theWord = speak + 'way';
+  if (speak.length > 1){
+    var theWord = speak + 'way';
+  } else {
+    var theWord = speak + 'ay';
+  }
   return theWord;
 };
 
