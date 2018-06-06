@@ -15,6 +15,14 @@ function letterQ(speak) {
   return theWord;
 };
 
+function letterSqu(speak) {
+  var word = speak.split("");
+  var letters = word.splice(0,3);
+  word.push(letters.join(""))
+  var theWord = word.join("") + "ay";
+  return theWord;
+};
+
 function isVowel(isItVowel) {
   if (isItVowel === 'a'|| isItVowel === 'e'|| isItVowel === 'i'|| isItVowel === 'o'|| isItVowel === 'u') {
     return true;
@@ -56,7 +64,7 @@ $(document).ready(function() {
   $("form#pigPlugin").submit(function(event){
     event.preventDefault();
     var sentence = $("input#sentenceInput").val();
-    sentence = sentence.replace(/[\-=`~!@#$%^&*()_+{}\\\[\\\]:";'<>?,./'"`]/g, "");
+    sentence = sentence.replace(/[\-=`~!@#$%^&*()_+{}\\\[\\\]:";'<>?,./'"`]/g,"");
     var newWord = [];
     var words = sentence.split(" ");
     for (var x=0; x<words.length; x++) {
@@ -66,6 +74,8 @@ $(document).ready(function() {
         newWord[x] = words[x];
       } else if (words[x][0].toLowerCase() === "y") {
         newWord[x] = letterY(words[x]).toLowerCase();
+      } else if (words[x][1] === 'q' && words[x][2] === 'u') {
+        newWord[x] = letterSqu(words[x]).toLowerCase();
       } else if (words[x][0] === 'q' && words[x][1] === 'u') {
         newWord[x] = letterQ(words[x]).toLowerCase();
       } else if (isVowel(words[x][0].toLowerCase())) {
