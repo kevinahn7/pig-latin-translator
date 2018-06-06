@@ -56,6 +56,7 @@ $(document).ready(function() {
   $("form#pigPlugin").submit(function(event){
     event.preventDefault();
     var sentence = $("input#sentenceInput").val();
+    sentence = sentence.replace(/[\-=`~!@#$%^&*()_+{}\\\[\\\]:";'<>?,./'"`]/g, "");
     var newWord = [];
     var words = sentence.split(" ");
     for (var x=0; x<words.length; x++) {
@@ -70,7 +71,7 @@ $(document).ready(function() {
       } else if (isVowel(words[x][0].toLowerCase())) {
         newWord[x] = vowelOne(words[x]).toLowerCase();
       } else if (!isRealVowel(words[x][0].toLowerCase())) {
-        newWord[x] = consonent(words[x]);
+        newWord[x] = consonent(words[x]).toLowerCase();
       };
     };
     $('#result').text(newWord.join(" "));
