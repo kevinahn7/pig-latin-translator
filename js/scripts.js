@@ -29,12 +29,10 @@ $(document).ready(function() {
     event.preventDefault();
     var sentence = $("input#sentenceInput").val();
     var newWord = [];
-    var vowels = ['a','e','i','o','u', 'y'];
-    var consonants = [ 'b','c','d','f','g','h','j','k','l','m','n','p','qu','r','s','t','v','w','x','z']
     var words = sentence.split(" ");
     var array = []
     for (var x=0; x<words.length; x++) {
-      if (parseInt(words[x])*2 === parseInt(words[x]) + parseInt(words[x])) {
+      if (!isNaN(words[x])) {
         newWord[x] = words[x];
       } else if (words[x] === "") {
         newWord[x] = words[x];
@@ -49,6 +47,8 @@ $(document).ready(function() {
     };
 
 
+    // var vowels = ['a','e','i','o','u', 'y'];
+    // var consonants = [ 'b','c','d','f','g','h','j','k','l','m','n','p','qu','r','s','t','v','w','x','z']
 
 
 
